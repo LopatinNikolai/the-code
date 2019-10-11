@@ -67,3 +67,88 @@ assert.deepEqual(result, [
 ]);
 
 console.info('OK!');
+
+
+
+
+
+// var assert = require('assert');
+
+// // Подключаем свою функцию
+// var lib = require('./index.js');
+
+// // Коллекция данных
+// var friends = [
+//     {
+//         name: 'Сэм',
+//         gender: 'Мужской',
+//         email: 'luisazamora@example.com',
+//         favoriteFruit: 'Картофель'
+//     },
+//     {
+//         name: 'Эмили',
+//         gender: 'Женский',
+//         email: 'example@example.com',
+//         favoriteFruit: 'Яблоко'
+//     },
+//     {
+//         name: 'Мэт',
+//         gender: 'Мужской',
+//         email: 'danamcgee@example.com',
+//         favoriteFruit: 'Яблоко'
+//     },
+//     {
+//         name: 'Брэд',
+//         gender: 'Мужской',
+//         email: 'newtonwilliams@example.com',
+//         favoriteFruit: 'Банан'
+//     },
+//     {
+//         name: 'Шерри',
+//         gender: 'Женский',
+//         email: 'danamcgee@example.com',
+//         favoriteFruit: 'Картофель'
+//     },
+//     {
+//         name: 'Керри',
+//         gender: 'Женский',
+//         email: 'danamcgee@example.com',
+//         favoriteFruit: 'Апельсин'
+//     },
+//     {
+//         name: 'Стелла',
+//         gender: 'Женский',
+//         email: 'waltersguzman@example.com',
+//         favoriteFruit: 'Картофель'
+//     }
+// ];
+
+// // Выполняем выборку и фильтрацию с помощью нашего конструктора
+// var result = lib.query(
+//     friends
+// );
+// console.log(result)
+
+
+    // args.forEach(element => {
+    //     if (element[0] === 'select') {
+    //         selects.push(element[1]);
+    //     }
+    //     if (element[0] === 'filterIn') {
+    //         filterIn.push([element[1], element[2]]);
+    //     }
+    // });
+    // filterIn.forEach(element => {
+    //     coll = coll.filter(ob => element[1].includes(ob[element[0]]));
+    // });
+    // selects.forEach(select => {
+    //     coll.forEach(ob => {
+    //         let result = {};
+            
+    //         Object.keys(ob).forEach(key => {
+    //             if (select.includes(key))   result[key] = ob[key];
+    //         });
+    //         resultcoll.push(result);
+    //     });
+
+    // });

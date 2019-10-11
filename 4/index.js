@@ -5,31 +5,34 @@
  */
 
 
- 
-function query(collection) {
-    let select = [];
-    let filterIn = [];
-    let coll = collection;
 
-    Array.prototype.intersect = function(...a) {
-        return [this,...a].reduce((p,c) => p.filter(e => c.includes(e)));
-      }
-      for (let i = 1;i < arguments.length;i++){
-          if (arguments[i][0] === 'select'){
-            select.push(arguments[i][1]);
-          }
-      }
+function query(collection, ...args) {
+    let coll = collection.map(el => Object.assign({}, el));
+    if (args.length === 0) return coll;
+
+    args.forEach(element => {
+        if (element[0] === 'filterIn') {
+            coll = coll.filter(ob => element[2].includes(ob[element[1]]));
+        }
+    });
+    args.forEach(element => {
+        if (element[0] === 'select') {
+            coll.forEach(ob => {          
+                Object.keys(ob).forEach(key => {
+                    if (!element[1].includes(key))   delete ob[key];
+                });
+            });
+        }
+    });
+
+    return coll;
 }
 
 /**
  * @params {String[]}
  */
 function select() {
-    let args = ['select',[]];
-    for (let i = 0; i < arguments.length; i++) {
-      args[1][i] = arguments[i];
-    }
-    return (args);
+    return (['select', [].slice.call(arguments)]);
 }
 
 /**
@@ -37,8 +40,8 @@ function select() {
  * @param {Array} values – Массив разрешённых значений
  */
 function filterIn(property, values) {
-    
-    return (['filterIn',property, values]);
+
+    return (['filterIn', property, values]);
 }
 
 module.exports = {
@@ -46,63 +49,3 @@ module.exports = {
     select: select,
     filterIn: filterIn
 };
-
-
-
-var assert = require('assert');
-
-// Подключаем свою функцию
-var lib = require('./index.js');
-
-// Коллекция данных
-var friends = [
-    {
-        name: 'Сэм',
-        gender: 'Мужской',
-        email: 'luisazamora@example.com',
-        favoriteFruit: 'Картофель'
-    },
-    {
-        name: 'Эмили',
-        gender: 'Женский',
-        email: 'example@example.com',
-        favoriteFruit: 'Яблоко'
-    },
-    {
-        name: 'Мэт',
-        gender: 'Мужской',
-        email: 'danamcgee@example.com',
-        favoriteFruit: 'Яблоко'
-    },
-    {
-        name: 'Брэд',
-        gender: 'Мужской',
-        email: 'newtonwilliams@example.com',
-        favoriteFruit: 'Банан'
-    },
-    {
-        name: 'Шерри',
-        gender: 'Женский',
-        email: 'danamcgee@example.com',
-        favoriteFruit: 'Картофель'
-    },
-    {
-        name: 'Керри',
-        gender: 'Женский',
-        email: 'danamcgee@example.com',
-        favoriteFruit: 'Апельсин'
-    },
-    {
-        name: 'Стелла',
-        gender: 'Женский',
-        email: 'waltersguzman@example.com',
-        favoriteFruit: 'Картофель'
-    }
-];
-
-// Выполняем выборку и фильтрацию с помощью нашего конструктора
-var result = lib.query(
-    friends,
-    lib.select('name', 'gender', 'email'),
-    lib.filterIn('favoriteFruit', ['Яблоко', 'Картофель'])
-);
