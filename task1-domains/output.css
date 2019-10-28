@@ -1,0 +1,56 @@
+html {
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+}
+
+.a {
+  background-size: cover;
+  height: 100vh;
+  background-image: url(background1.jpg);
+}
+
+.b {
+  background-size: cover;
+  height: 100vh;
+}
+
+.c {
+  background-size: cover;
+  height: 100vh;
+  background-image: url(background2.jpg);
+}
+
+a {
+  color: black;
+}
+
+.tools {
+  top: 50%;
+  right: 2%;
+  position: fixed;
+}
+
+.block {
+  margin-bottom: 10px;
+  width: 12px;
+  height: 12px;
+  border: 1px solid black;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: white;
+}
+
+.blockblack {
+  margin-bottom: 10px;
+  width: 12px;
+  height: 12px;
+  border: 1px solid black;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: black;
+}
+
+/*# sourceMappingURL=output.css.map */
