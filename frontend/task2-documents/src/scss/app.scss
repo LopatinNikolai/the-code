@@ -1,0 +1,109 @@
+@font-face {
+  font-family: "MyWebFont";
+
+  src: url("assets/fonts/PT Sans Caption (PTC55F).ttf");
+
+  font-weight: normal;
+
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-family: "MyWebFont";
+  overflow: hidden;
+}
+body {
+  margin: 0;
+}
+
+.content {
+  text-align: center;
+  overflow: hidden;
+  width: 90vh;
+  max-width: 1092px;
+  margin: 5vh auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.fileCheck {
+  width: 50%;
+  display: flex;
+}
+.animation {
+  flex-basis: 10%;
+}
+.fileLabel {
+  text-align: left;
+  flex-basis: 65%;
+}
+.none {
+  display: none;
+}
+.hide {
+  opacity: 0;
+}
+.loading {
+  text-decoration: underline;
+  font-weight: bold;
+  font-size: 12px;
+}
+.info {
+  font-weight: bold;
+  font-size: 11px;
+  opacity: 0.5;
+}
+.status {
+  flex-basis: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.results {
+  font-size: 12px;
+  text-align: right;
+  font-weight: bold;
+
+  color: red;
+}
+.checked {
+  font-size: 12px;
+  text-align: right;
+  font-weight: bold;
+
+  color: green;
+}
+.expectation {
+  font-size: 12px;
+  text-align: right;
+  font-weight: bold;
+
+  opacity: 0.5;
+}
+.loader {
+  opacity: 0.5;
+  border-top: 0.2em solid currentcolor;
+  border-right: 0.2em solid transparent;
+  animation: loader 1s linear infinite;
+  border-radius: 100%;
+}
+
+@keyframes loader {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 819px) {
+  .content {
+    max-width: 90vw;
+  }
+  .fileCheck {
+    width: 60%;
+  }
+}
